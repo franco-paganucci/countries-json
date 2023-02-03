@@ -1757,12 +1757,14 @@ const countryFormselect = document.getElementById("select-country")
 const divContainer = document.getElementById("div-select")
 const phoneInput = document.getElementById("input-areacode")
 
+
 countryFormselect.addEventListener("change", () => {
   countrySelected(countryFormselect.value);
 });
 
 COUNTRIES.forEach(country => {
     const name = country.name
+    const searchCode = country.code
     const selectedCountryCode = country.mobileCode
     const newOption = document.createElement("option")
     newOption.value = selectedCountryCode
@@ -1771,21 +1773,16 @@ COUNTRIES.forEach(country => {
     countryFormselect.appendChild(newOption)
 })
 
-const countrySelected = (val) => {
-  console.log("change");
-  phoneInput.value = val
+var localCountryCode = "";
+fetch("http://ipinfo.io")
+  .then(response => {
+    console.log(response.city, response.country);
+    localCountryCode = response.country 
+    getNameAndPhoneCodeByCode(localCountryCode)
+  }).catch(error => {
+    console.log(error)
+  });
+
+function getNameAndPhoneCodeByCode(code){
+	console.log("corre la compareFunction y pasa este parametro: " + code)
 }
-
-$('input[name="areacode"]').keyup(function(){
-  var data = $(this).val();
-  var regx = /^\+\(?([0-9]{3,5})\)?([ .-]?)([0-9]+)\2([0-9]+)$/;
-
-  console.log( data + ' patt:'+ data.match(regx));
-
-  if ( data === '' || data.match(regx) ){
-    $('.form-error-msg').css('display','none');
-  }
-  else {
-    $('.form-error-msg').css('display','block');
-  }
-});
