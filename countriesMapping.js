@@ -1775,3 +1775,17 @@ const countrySelected = (val) => {
   console.log("change");
   phoneInput.value = val
 }
+
+$('input[name="areacode"]').keyup(function(){
+  var data = $(this).val();
+  var regx = /^\+\(?([0-9]{3,5})\)?([ .-]?)([0-9]+)\2([0-9]+)$/;
+
+  console.log( data + ' patt:'+ data.match(regx));
+
+  if ( data === '' || data.match(regx) ){
+    $('.form-error-msg').css('display','none');
+  }
+  else {
+    $('.form-error-msg').css('display','block');
+  }
+});
