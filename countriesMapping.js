@@ -1764,7 +1764,6 @@ countryFormselect.addEventListener("change", () => {
 
 COUNTRIES.forEach(country => {
     const name = country.name
-    const searchCode = country.code
     const selectedCountryCode = country.mobileCode
     const newOption = document.createElement("option")
     newOption.value = selectedCountryCode
@@ -1773,6 +1772,7 @@ COUNTRIES.forEach(country => {
     countryFormselect.appendChild(newOption)
 })
 
+/*
 var localCountryCode = "";
 fetch("http://ipinfo.io")
   .then(response => {
@@ -1786,3 +1786,7 @@ fetch("http://ipinfo.io")
 function getNameAndPhoneCodeByCode(code){
 	console.log("corre la compareFunction y pasa este parametro: " + code)
 }
+*/
+
+
+
