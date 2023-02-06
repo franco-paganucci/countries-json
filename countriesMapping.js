@@ -1772,21 +1772,5 @@ COUNTRIES.forEach(country => {
     countryFormselect.appendChild(newOption)
 })
 
-/*
-var localCountryCode = "";
-fetch("http://ipinfo.io")
-  .then(response => {
-    console.log(response.city, response.country);
-    localCountryCode = response.country 
-    getNameAndPhoneCodeByCode(localCountryCode)
-  }).catch(error => {
-    console.log(error)
-  });
-
-function getNameAndPhoneCodeByCode(code){
-	console.log("corre la compareFunction y pasa este parametro: " + code)
-}
-*/
-
 
 
